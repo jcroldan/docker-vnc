@@ -48,6 +48,8 @@ RUN apt-get update && apt-get install -y code # or code-insiders
 # Network Manager
 RUN apt-get install -y network-manager nano
 
+RUN apt-get install -y dbus-x11 xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+
 # Set bash as default user terminal shell
 RUN chsh -s /bin/bash user
 
