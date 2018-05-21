@@ -58,5 +58,5 @@ RUN chsh -s /bin/bash user
 #COPY vncmain.sh /app/vncmain.sh
 #RUN chmod u+x /app/vncmain.sh
 
-COPY xstartup /etc/vnc/xstartup
+COPY config/xstartup /etc/vnc/xstartup
 RUN chmod u+x /etc/vnc/xstartup
