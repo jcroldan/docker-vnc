@@ -1,0 +1,1 @@
+docker run --rm -it -v docker-vnc_home-data:/user-data -v C:\\Users\\jcroldan\\development\\docker\\docker-vnc\\backup:/backup alpine ash -c "cd /user-data ; tar cvf /backup/backup.tar ."

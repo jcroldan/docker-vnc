@@ -1,0 +1,1 @@
+docker run --rm -it -v dockervnc_home-data:/from -v docker-vnc_home-data:/to alpine ash -c "cd /from ; cp -av . /to"

@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  docker-vnc:
+    build: .
+    ports:
+      - 5911:5911
+      - 9000:9000
+    environment:
+      - VNC_PASSWD=123456
+      - VNC_GEOMETRY=1920x1080
+      - USER_PASSWD=123456
+    volumes:
+      - home-data:/home/user
+      - /var/run/docker.sock:/var/run/docker.sock
+    cap_add:
+      - SYS_ADMIN
+      - net_admin
+      - sys_module
+      
+volumes:
+  home-data:
+
+networks:
+  bridge_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.2.0/24
+  host_net:
