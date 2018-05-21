@@ -15,8 +15,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     cap_add:
       - SYS_ADMIN
-      - net_admin
-      - sys_module
+      - NET_ADMIN
+      - SYS_MODULE
       
 volumes:
   home-data:

@@ -1,11 +1,11 @@
 FROM oott123/docker-novnc
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates wget && \
-    apt-get install -y xfce4 xfce4-goodies
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y curl wget nano ca-certificates software-properties-common && \
+    apt-get install -y xfce4 xfce4-goodies && \
+    apt-get install -y network-manager dbus-x11 xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
 
 # Budgie Desktop
-#RUN apt-get install -y software-properties-common
 #RUN add-apt-repository ppa:budgie-remix/ppa
 #RUN apt-get update
 #RUN apt-get install -y budgie-desktop-environment
@@ -45,20 +45,14 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
     sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 RUN apt-get update && apt-get install -y code # or code-insiders
 
-# Network Manager
-RUN apt-get install -y network-manager nano
-
-RUN apt-get install -y dbus-x11 xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+# Autoremove & Clean
+RUN apt-get autoremove -y && \
+    apt-get clean
 
 # Set bash as default user terminal shell
 RUN chsh -s /bin/bash user
 
-#RUN ip r add 10.0.0.0/8 via 10.0.2.2
-
 # ---------------------------------------------------------------
-
-#COPY vncmain.sh /app/vncmain.sh
-#RUN chmod u+x /app/vncmain.sh
 
 COPY config/xstartup /etc/vnc/xstartup
 RUN chmod u+x /etc/vnc/xstartup
