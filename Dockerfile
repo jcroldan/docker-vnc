@@ -60,3 +60,5 @@ RUN chsh -s /bin/bash user
 
 COPY config/xstartup /etc/vnc/xstartup
 RUN chmod u+x /etc/vnc/xstartup
+
+EXPOSE 5911
